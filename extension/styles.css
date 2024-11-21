@@ -1,0 +1,238 @@
+.chat-icon {
+  width: 24px;
+  height: 24px;
+  display: none; /* Hidden by default in expanded state */
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-text {
+  position: relative;
+}
+.video-chat-container {
+  position: fixed;
+  right: 20px;
+  bottom: 80px;
+  cursor: move;
+  z-index: 999;
+  user-select: none;
+  width: 300px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(147, 51, 234, 0.1);  /* Purple tinted shadow */
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  transition: all 0.3s ease-in-out;
+  /* height: 500px; /* Fixed total height */
+  max-height: 80vh; /* Don't let it get bigger than 80% of viewport height */
+}
+
+/* .video-chat-container.dragging {
+  opacity: 0.8;
+  pointer-events: auto;
+} */
+  
+.chat-header {
+  padding: 8px 12px;
+  background: #F3E8FF;  /* Light purple background */
+  border-bottom: 1px solid #D8B4FE;  /* Light purple border */
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  height: 40px;
+  box-sizing: border-box;
+}
+
+.chat-header.minimized {
+  border-radius: 8px;
+  border-bottom: none;
+}
+  
+  .chat-messages {
+    flex: 1;
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 12px;
+    /* Add styling for the scrollbar */
+    scrollbar-width: thin;
+    scrollbar-color: #9333EA #F3E8FF; /* Uses our purple theme */
+    -webkit-user-select: text;  /* Chrome specific */
+    user-select: text;          /* Standard syntax */
+    cursor: auto;    
+  }
+  
+  .message {
+    margin-bottom: 12px;
+    padding: 8px 12px;
+    border-radius: 15px;
+    max-width: 80%;
+    -webkit-user-select: text;
+    user-select: text;
+    cursor: auto;
+  }
+  
+  .user-message {
+    background: #9333EA;  /* Medium purple */
+    color: white;
+    margin-left: auto;
+  }
+  
+  .ai-message {
+    background: #F3E8FF;  /* Light purple */
+    color: #3F3F46;  /* Dark gray text */
+    margin-right: auto;
+  }
+  .ai-message, .user-message {
+    -webkit-user-select: text;
+    user-select: text;
+    cursor: auto;
+}
+  
+  .chat-input {
+    padding: 12px;
+    border-top: 1px solid #e9ecef;
+    display: flex;
+    gap: 8px;
+    background: white; /* Ensure it's not transparent */
+    /* Make it stay at bottom */
+    position: sticky;
+    bottom: 0;
+  }
+  
+  .chat-input input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+  }
+  
+  .chat-input button {
+    padding: 8px 16px;
+    background: #9333EA;  /* Medium purple */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .chat-input button:hover {
+    background: #7E22CE;  /* Darker purple on hover */
+  }
+  
+  .timestamp-link {
+    color: #007bff;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .minimized .chat-icon {
+    display: block; /* Show icon when minimized */
+}
+
+.minimized .header-text {
+    font-size: 14px;
+    /* Speech bubble effect */
+    background: #F3E8FF;  /* Light purple */
+    padding: 4px 8px;
+    border-radius: 12px;
+    margin-left: 8px;
+    position: relative;
+}
+
+.minimized .header-text:before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background: #F3E8FF;  /* Light purple for speech bubble arrow */
+    clip-path: polygon(100% 0, 0 50%, 100% 100%);
+}
+.chat-input input:focus {
+  border-color: #9333EA;  /* Medium purple */
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(147, 51, 234, 0.2);
+}
+.chat-content {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 40px); /* Full height minus header height */
+  overflow: hidden; /* Prevent content from spilling */
+}
+.chat-messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+  background: #F3E8FF;
+  border-radius: 4px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background: #9333EA;
+  border-radius: 4px;
+}
+.video-chat-container.minimized {
+  width: 48px;  /* Same as icon size */
+  height: 48px;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: none;
+  bottom: 80px;
+}
+
+.chat-icon-fallback {
+  width: 24px;
+  height: 24px;
+  background: #9333EA;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.minimized .chat-header {
+  padding: 0;
+  background: transparent;
+  border: none;
+  height: 48px;
+}
+
+.minimized .header-text,
+.minimized .minimize-button {
+  display: none;
+}
+
+.minimized .chat-icon {
+  width: 48px;
+  height: 48px;
+}
+
+/* Hover effect for the icon */
+.minimized .chat-icon:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(147, 51, 234, 0.3);
+}
+
+.chat-header {
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.minimize-button {
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
