@@ -25,7 +25,16 @@ class GPTService:
         Base your answers only on the provided transcript and metadata.
         If asked about timestamps, refer to the transcript segments.
         
-        For timestamp references, use the format MM:SS."""
+         Important Instructions for Timestamp Format:
+    1. For videos under 1 hour:
+       - Use format: [MM:SS]
+       - Example: [05:35] for 5 minutes 35 seconds
+       - Example: [14:02] for 14 minutes 2 seconds
+    
+    2. For videos over 1 hour:
+       - Use format: [HH:MM:SS]
+       - Example: [1:05:35] for 1 hour 5 minutes 35 seconds
+       - Example: [2:14:02] for 2 hours 14 minutes 2 seconds"""
 
     def get_or_create_session(self, video_id: str) -> List[dict]:
         if video_id not in self.sessions:
@@ -87,14 +96,29 @@ class GPTService:
         # Also update how we format the transcript for better context
         formatted_segments = []
         for entry in transcript:
-            # Convert seconds to MM:SS format for reference
-            seconds = entry['start']
-            minutes = int(seconds // 60)
-            remaining_seconds = int(seconds % 60)
-            timestamp_mmss = f"{minutes}:{remaining_seconds:02d}"
+            # # Convert seconds to MM:SS format for reference
+            # seconds = entry['start']
+            # minutes = int(seconds // 60)
+            # remaining_seconds = int(seconds % 60)
+            # timestamp_mmss = f"{minutes}:{remaining_seconds:02d}"
+            
+            # formatted_segments.append(
+            #     # f"[{entry['start']}s | {timestamp_mmss}] {entry['text']}"
+            #     f"[{timestamp_mmss}] {entry['text']}"
+            # )
+        # Convert seconds to HH:MM:SS or MM:SS format
+            total_seconds = entry['start']
+            hours = int(total_seconds // 3600)
+            minutes = int((total_seconds % 3600) // 60)
+            seconds = int(total_seconds % 60)
+            
+            # Format timestamp based on whether hours are needed
+            if hours > 0:
+                timestamp = f"{hours}:{minutes:02d}:{seconds:02d}"
+            else:
+                timestamp = f"{minutes}:{seconds:02d}"
             
             formatted_segments.append(
-                # f"[{entry['start']}s | {timestamp_mmss}] {entry['text']}"
-                f"[{timestamp_mmss}] {entry['text']}"
+                f"[{timestamp}] {entry['text']}"
             )
         return "\n".join(formatted_segments)
