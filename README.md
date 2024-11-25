@@ -109,10 +109,11 @@ Request body: { "video_id": "string", "question": "string", "transcript": [], "m
 
 ## Future Improvements
 
- Support for multiple languages
- Rate Limiting and better rate control
- Better fallback for videos with no transcript
- Custom model fine-tuning
+1) Support for multiple languages
+2) Rate Limiting and better rate control
+3) Better fallback for videos with no transcript
+4) Custom model fine-tuning
+5) Improved Prompting
 
 ## Acknowledgments
 
