@@ -72,7 +72,53 @@ uvicorn app:app --reload
 4. Get AI-powered responses with relevant timestamps
 
 Example questions:
-1) Can you summarize this video?
-2) What are the main points discussed?
-3) What was mentioned at 2:30?"
-4) Tell me about the part where they discuss X
+-Can you summarize this video?
+-What are the main points discussed?
+-What was mentioned at 2:30?
+-Tell me about the part where they discuss X
+
+
+## Development
+### Backend Development
+
+-Backend runs on http://localhost:8000
+-API documentation available at http://localhost:8000/docs
+-Transcript fetching and GPT processing happen asynchronously
+-Context management implemented for efficient token usage
+
+### Extension Development
+
+-Content script injected on YouTube pages
+-Minimizable chat interface
+-Automatic video detection
+-Transcript caching for efficiency
+-Real-time context updates
+
+## API Endpoints
+
+### POST /api/transcript
+
+Get video transcript
+Request body: { "video_id": "string" }
+
+
+### POST /api/chat
+
+Process user questions
+Request body: { "video_id": "string", "question": "string", "transcript": [], "metadata": {} }
+
+## Future Improvements
+
+ Support for multiple languages
+ Rate Limiting and better rate control
+ Better fallback for videos with no transcript
+ Custom model fine-tuning
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details
+
+## Acknowledgments
+
+OpenAI for GPT-4 API
+YouTube Data API
+youtube-transcript-api creators
