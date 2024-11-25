@@ -114,9 +114,6 @@ Request body: { "video_id": "string", "question": "string", "transcript": [], "m
  Better fallback for videos with no transcript
  Custom model fine-tuning
 
-## License
-This project is licensed under the MIT License - see the LICENSE file for details
-
 ## Acknowledgments
 
 OpenAI for GPT-4 API
