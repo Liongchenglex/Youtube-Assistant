@@ -41,9 +41,9 @@ cd youtube-assistant
 
 2. Create and activate virtual env
 python -m venv venv
-# For Windows
+For Windows: 
 venv\Scripts\activate
-# For macOS/Linux
+For Mac:
 source venv/bin/activate
 
 3. Install dependencies
@@ -52,7 +52,7 @@ pip install -r requirements.txt
 
 4. Set up environment variables
 cp .env.example .env
-# Add your OpenAI API key to .env file
+Add your OpenAI API key to .env file
 OPENAI_API_KEY=your_api_key_here
 
 5. Run the Backedn Server
@@ -73,7 +73,7 @@ uvicorn app:app --reload
 
 Example questions:
 
-"Can you summarize this video?"
-"What are the main points discussed?"
-"What was mentioned at 2:30?"
-"Tell me about the part where they discuss X"
+-"Can you summarize this video?"
+-"What are the main points discussed?"
+-"What was mentioned at 2:30?"
+-"Tell me about the part where they discuss X"
