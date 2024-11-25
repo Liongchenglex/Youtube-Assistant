@@ -36,7 +36,6 @@ A Chrome extension that enables interactive AI-powered conversations about YouTu
 ## Installation
 ### Backend Setup
 1. Clone the repository
-```bash
 git clone https://github.com/Liongchenglex/youtube-assistant.git
 cd youtube-assistant
 
