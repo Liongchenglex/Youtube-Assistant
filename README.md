@@ -72,8 +72,7 @@ uvicorn app:app --reload
 4. Get AI-powered responses with relevant timestamps
 
 Example questions:
-
--"Can you summarize this video?"
--"What are the main points discussed?"
--"What was mentioned at 2:30?"
--"Tell me about the part where they discuss X"
+"Can you summarize this video?";
+"What are the main points discussed?";
+"What was mentioned at 2:30?";
+"Tell me about the part where they discuss X"
