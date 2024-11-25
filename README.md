@@ -81,18 +81,18 @@ Example questions:
 ## Development
 ### Backend Development
 
--Backend runs on http://localhost:8000
--API documentation available at http://localhost:8000/docs
--Transcript fetching and GPT processing happen asynchronously
--Context management implemented for efficient token usage
+1) Backend runs on http://localhost:8000
+2) API documentation available at http://localhost:8000/docs
+3) Transcript fetching and GPT processing happen asynchronously
+4) Context management implemented for efficient token usage
 
 ### Extension Development
 
--Content script injected on YouTube pages
--Minimizable chat interface
--Automatic video detection
--Transcript caching for efficiency
--Real-time context updates
+1) Content script injected on YouTube pages
+2) Minimizable chat interface
+3) Automatic video detection
+4) Transcript caching for efficiency
+5) Real-time context updates
 
 ## API Endpoints
 
@@ -117,6 +117,6 @@ Request body: { "video_id": "string", "question": "string", "transcript": [], "m
 
 ## Acknowledgments
 
-OpenAI for GPT-4 API
-YouTube Data API
-youtube-transcript-api creators
+1) OpenAI for GPT-4 API
+2) YouTube Data API
+3) youtube-transcript-api creators
